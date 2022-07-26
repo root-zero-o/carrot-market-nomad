@@ -1,11 +1,10 @@
 import { useState } from "react";
 
-function cls(...classnames:string[]){
-    return classnames.join(" ")
+function cls(...classnames: string[]) {
+  return classnames.join(" ");
 }
 
 export default function Enter() {
-
   const [method, setMethod] = useState<"email" | "phone">("email");
   const onEmailClick = () => setMethod("email");
   const onPhoneClick = () => setMethod("phone");
@@ -16,43 +15,55 @@ export default function Enter() {
         <div className="flex flex-col items-center">
           <h5 className="text-sm text-gray-500 font-medium">Enter using:</h5>
           <div className="grid border-b mt-8 w-full grid-cols-2 gap-16">
-            <button 
-                className={cls("pb-4 font-bold border-b-2", 
+            <button
+              className={cls(
+                "pb-4 font-bold border-b-2",
                 method === "email"
-                    ? "border-orange-500 text-orange-400"
-                    : "border-transparent text-gray-500"
-                )}
-                onClick={onEmailClick}    
+                  ? "border-orange-500 text-orange-400"
+                  : "border-transparent text-gray-500"
+              )}
+              onClick={onEmailClick}
             >
-                Email
+              Email
             </button>
-            <button 
-                className={cls("pb-4 font-bold border-b-2", 
+            <button
+              className={cls(
+                "pb-4 font-bold border-b-2",
                 method === "phone"
-                    ? "border-orange-500 text-orange-400"
-                    : "border-transparent text-gray-500"
-                )}
-                onClick={onPhoneClick}>
-                Phone
+                  ? "border-orange-500 text-orange-400"
+                  : "border-transparent text-gray-500"
+              )}
+              onClick={onPhoneClick}
+            >
+              Phone
             </button>
           </div>
         </div>
         <form className="flex flex-col mt-8">
-          <label className="text-sm font-medium text-gray-700">
+          <label htmlFor="input" className="text-sm font-medium text-gray-700">
             {method === "email" ? "Email address" : null}
             {method === "phone" ? "Phone number" : null}
           </label>
           <div className="mt-2">
-            {method === "email" ? 
-                <input 
-                    type="email" 
-                    className="appearance-none w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-orange-500 focus:border-orange-500" 
-                    required 
-                /> : null}
+            {method === "email" ? (
+              <input
+                type="email"
+                className="appearance-none w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-orange-500 focus:border-orange-500"
+                required
+                id="input"
+              />
+            ) : null}
             {method === "phone" ? (
               <div className="flex rounded-md shadow-sm">
-                <span className="flex items-center justify-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 select-none text-sm">+82</span>
-                <input type="number" className="appearance-none w-full px-3 py-2 border border-gray-300 rounded-md rounded-l-none shadow-sm placeholder-gray-400 focus:outline-none focus:ring-orange-500 focus:border-orange-500" required />
+                <span className="flex items-center justify-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 select-none text-sm">
+                  +82
+                </span>
+                <input
+                  id="input"
+                  type="number"
+                  className="appearance-none w-full px-3 py-2 border border-gray-300 rounded-md rounded-l-none shadow-sm placeholder-gray-400 focus:outline-none focus:ring-orange-500 focus:border-orange-500"
+                  required
+                />
               </div>
             ) : null}
           </div>
@@ -63,9 +74,11 @@ export default function Enter() {
         </form>
         <div className="mt-8">
           <div className="relative">
-            <div className="absolute w-full border-t border-gray-300"/>
+            <div className="absolute w-full border-t border-gray-300" />
             <div className="relative -top-3 text-center">
-              <span className="bg-white px-2 text-sm text-gray-500">Or enter with</span>
+              <span className="bg-white px-2 text-sm text-gray-500">
+                Or enter with
+              </span>
             </div>
           </div>
           <div className="grid grid-cols-2 mt-2 gap-3">
